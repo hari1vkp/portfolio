@@ -1,103 +1,640 @@
-import Image from "next/image";
+'use client';
+
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, Github, Mail, Phone } from 'lucide-react';
+import { StarsBackground } from '@/components/portfolio/stars';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [currentSection, setCurrentSection] = useState('welcome');
+  const [showContent, setShowContent] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    // Show welcome screen initially
+    const timer = setTimeout(() => {
+      setShowContent(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleExplore = () => {
+    setCurrentSection('hero');
+  };
+
+  if (currentSection === 'welcome') {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted overflow-hidden">
+        {/* Animated background stars */}
+        <StarsBackground count={100} />
+        
+        {/* Solar system animation */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          {/* Sun */}
+          <motion.div
+            className="absolute w-32 h-32 bg-yellow-500 rounded-full shadow-[0_0_40px_20px_rgba(255,204,0,0.5)]"
+            animate={{
+              scale: [1, 1.05, 1],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+            }}
+          />
+          
+          {/* Orbiting planets using custom orbital paths */}
+          {/* Planet 1 - Mercury */}
+          <div className="absolute w-2 h-2 bg-gray-400 rounded-full animate-orbit" 
+               style={{ 
+                 top: '50%',
+                 left: '50%',
+                 '--orbit-radius': '60px'
+               }}>
+          </div>
+          
+          {/* Planet 2 - Venus */}
+          <div className="absolute w-3 h-3 bg-yellow-200 rounded-full animate-orbit" 
+               style={{ 
+                 top: '50%',
+                 left: '50%',
+                 '--orbit-radius': '100px',
+                 animationDuration: '8s'
+               }}>
+          </div>
+          
+          {/* Planet 3 - Earth */}
+          <div className="absolute w-3 h-3 bg-blue-500 rounded-full animate-orbit" 
+               style={{ 
+                 top: '50%',
+                 left: '50%',
+                 '--orbit-radius': '140px',
+                 animationDuration: '12s'
+               }}>
+            {/* Moon */}
+            <div className="absolute w-1 h-1 bg-gray-300 rounded-full animate-orbit" 
+                 style={{ 
+                   top: '50%',
+                   left: '50%',
+                   '--orbit-radius': '8px',
+                   animationDuration: '2s',
+                   animationDirection: 'reverse'
+                 }}>
+            </div>
+          </div>
+          
+          {/* Planet 4 - Mars */}
+          <div className="absolute w-2.5 h-2.5 bg-red-500 rounded-full animate-orbit" 
+               style={{ 
+                 top: '50%',
+                 left: '50%',
+                 '--orbit-radius': '180px',
+                 animationDuration: '15s'
+               }}>
+          </div>
+          
+          {/* Planet 5 - Jupiter */}
+          <div className="absolute w-5 h-5 bg-orange-300 rounded-full animate-orbit" 
+               style={{ 
+                 top: '50%',
+                 left: '50%',
+                 '--orbit-radius': '220px',
+                 animationDuration: '20s'
+               }}>
+          </div>
+          
+          {/* Planet 6 - Saturn */}
+          <div className="absolute w-4 h-4 bg-yellow-100 rounded-full animate-orbit" 
+               style={{ 
+                 top: '50%',
+                 left: '50%',
+                 '--orbit-radius': '260px',
+                 animationDuration: '25s'
+               }}>
+            {/* Saturn's rings */}
+            <div className="absolute w-6 h-1 bg-yellow-200 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+          </div>
+          
+          {/* Planet 7 - Uranus */}
+          <div className="absolute w-3.5 h-3.5 bg-blue-300 rounded-full animate-orbit" 
+               style={{ 
+                 top: '50%',
+                 left: '50%',
+                 '--orbit-radius': '300px',
+                 animationDuration: '30s'
+               }}>
+          </div>
+          
+          {/* Planet 8 - Neptune */}
+          <div className="absolute w-3.5 h-3.5 bg-blue-700 rounded-full animate-orbit" 
+               style={{ 
+                 top: '50%',
+                 left: '50%',
+                 '--orbit-radius': '340px',
+                 animationDuration: '35s'
+               }}>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        
+        <AnimatePresence>
+          {showContent && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.8 }}
+              className="text-center px-4 relative z-10"
+            >
+              <motion.h1 
+                className="text-4xl md:text-6xl font-bold mb-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+              >
+                Welcome to <span className="text-yellow-400">Hari&apos;s Universe</span>
+              </motion.h1>
+              
+              <motion.p 
+                className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+              >
+                Where innovation orbits excellence in Java development
+              </motion.p>
+              
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+              >
+                <Button 
+                  size="lg" 
+                  onClick={handleExplore}
+                  className="animate-pulse hover:animate-none bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600"
+                >
+                  Explore My World <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+      {/* Stars background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <StarsBackground count={150} />
+      </div>
+      
+      <HeroSection />
+      <SkillsSection />
+      <ProjectsSection />
+      <ContactSection />
+      <FooterSection />
     </div>
+  );
+}
+
+function HeroSection() {
+  const skills = ["Java", "Spring Boot", "AWS", "MySQL", "JavaScript"];
+  
+  return (
+    <section className="py-20 md:py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 -z-10"></div>
+      <div className="container px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <motion.h1 
+            className="text-4xl md:text-6xl font-bold mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            Hi, I&apos;m <span className="text-yellow-400">Hariharasudhan R</span>
+          </motion.h1>
+          
+          <motion.h2 
+            className="text-2xl md:text-3xl font-semibold text-muted-foreground mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            Java Full Stack Developer
+          </motion.h2>
+          
+          <motion.p 
+            className="text-lg md:text-xl max-w-3xl mx-auto mb-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+          >
+            Passionate and skilled Java Developer with hands-on experience in building robust applications 
+            using Java, Spring Boot, and AWS. Strong understanding of Data Structures and Algorithms, 
+            and proficient in SQL with JDBC. Experienced in full-stack development with JavaScript and Java.
+          </motion.p>
+          
+          <motion.div 
+            className="flex flex-wrap justify-center gap-3 mb-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+          >
+            {skills.map((skill, index) => (
+              <motion.span
+                key={skill}
+                className="px-4 py-2 bg-secondary text-secondary-foreground rounded-full text-sm font-medium"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 + index * 0.1 }}
+                whileHover={{ scale: 1.05, backgroundColor: "#f59e0b" }}
+              >
+                {skill}
+              </motion.span>
+            ))}
+          </motion.div>
+          
+          <motion.div
+            className="flex flex-wrap justify-center gap-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+          >
+            <Button asChild size="lg" className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700">
+              <a href="#projects">View My Work</a>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <a href="#contact">Contact Me</a>
+            </Button>
+          </motion.div>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+        >
+          <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border shadow-lg">
+            <h3 className="text-xl font-bold mb-4 text-yellow-400">Education</h3>
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-semibold">Bachelor of Computer Applications (BCA)</h4>
+                <p className="text-muted-foreground">SRM Arts and Science College, Trichy | [2020-2023]</p>
+              </div>
+              <div>
+                <h4 className="font-semibold">Master of Computer Application (MCA)</h4>
+                <p className="text-muted-foreground">Srinivasan College of Arts and Science | [2024-2026]</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border shadow-lg">
+            <h3 className="text-xl font-bold mb-4 text-yellow-400">Experience</h3>
+            <div>
+              <h4 className="font-semibold">Web Dev Intern</h4>
+              <p className="text-muted-foreground">Cloud Garage | Oct 2024 - March 2025</p>
+              <ul className="mt-2 list-disc list-inside text-muted-foreground space-y-1">
+                <li>Built Java applications using Spring Boot</li>
+                <li>Integrated REST APIs and managed cloud services</li>
+                <li>Used API to trigger Terraform IAAC</li>
+                <li>Improved performance and security</li>
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function SkillsSection() {
+  const skillCategories = [
+    {
+      category: "Programming Languages",
+      skills: ["Java", "JavaScript"]
+    },
+    {
+      category: "Frameworks & Libraries",
+      skills: ["Spring Boot", "Bootstrap"]
+    },
+    {
+      category: "Databases",
+      skills: ["MySQL"]
+    },
+    {
+      category: "Cloud Technologies",
+      skills: ["AWS (EC2, S3, Lambda, RDS)"]
+    },
+    {
+      category: "Web Technologies",
+      skills: ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      category: "Tools & Version Control",
+      skills: ["Git", "GitHub"]
+    },
+    {
+      category: "Software Development Concepts",
+      skills: ["Data Structures & Algorithms", "Object-Oriented Programming (OOP)", "Software Licensing & Open Source"]
+    }
+  ];
+  
+  return (
+    <section id="skills" className="py-20 bg-muted/30 relative">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full filter blur-[100px] opacity-20"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500 rounded-full filter blur-[100px] opacity-20"></div>
+      </div>
+      
+      <div className="container px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-yellow-400">My Skills</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Technologies and tools I use to build robust, scalable Java applications
+          </p>
+        </motion.div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skillCategories.map((category, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+              className="h-full"
+            >
+              <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border shadow-sm h-full hover:shadow-md transition-shadow">
+                <h3 className="text-xl font-bold mb-4 text-yellow-400">{category.category}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill, skillIndex) => (
+                    <span 
+                      key={skillIndex} 
+                      className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProjectsSection() {
+  const projects = [
+    {
+      title: "Auto Cloud",
+      description: "Developed a cloud services portal integrating AWS, Azure, and GCP. Contributed to backend development using Java and Spring Boot. Implemented multi-cloud API integration and authentication.",
+      technologies: ["Java", "Spring Boot", "AWS", "Azure", "GCP"],
+      githubUrl: "#",
+      demoUrl: "#"
+    },
+    {
+      title: "Web Development Internship Project",
+      description: "Built Java applications using Spring Boot. Integrated REST APIs and managed cloud services. Used API to trigger Terraform IAAC. Improved performance and security.",
+      technologies: ["Java", "Spring Boot", "REST APIs", "Terraform", "Cloud Services"],
+      githubUrl: "#",
+      demoUrl: "#"
+    }
+  ];
+  
+  return (
+    <section id="projects" className="py-20">
+      <div className="container px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-yellow-400">My Projects</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Showcase of my Java development work and real-world applications
+          </p>
+        </motion.div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+              className="h-full"
+            >
+              <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border shadow-sm h-full flex flex-col">
+                <h3 className="text-2xl font-bold mb-3 text-yellow-400">{project.title}</h3>
+                <p className="text-muted-foreground mb-4 flex-grow">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.technologies.map((tech, techIndex) => (
+                    <span 
+                      key={techIndex} 
+                      className="px-2 py-1 bg-secondary text-secondary-foreground rounded text-xs"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-2 mt-auto">
+                  <Button variant="outline" size="sm" asChild>
+                    <a href={project.githubUrl}>GitHub</a>
+                  </Button>
+                  <Button size="sm" asChild className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700">
+                    <a href={project.demoUrl}>Live Demo</a>
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactSection() {
+  return (
+    <section id="contact" className="py-20 bg-muted/30 relative">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/3 right-1/3 w-48 h-48 bg-green-500 rounded-full filter blur-[80px] opacity-20"></div>
+      </div>
+      
+      <div className="container px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-yellow-400">Get In Touch</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Have a project in mind or want to discuss potential opportunities? Feel free to reach out!
+          </p>
+        </motion.div>
+        
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <div>
+              <h3 className="text-xl font-bold mb-6 text-yellow-400">Contact Information</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Mail className="h-5 w-5 text-yellow-400" />
+                  <span>hariharasudhan.info02@gmail.com</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="h-5 w-5 text-yellow-400" />
+                  <span>+91 8667637540</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Github className="h-5 w-5 text-yellow-400" />
+                  <a href="https://github.com/hari1vkp" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                    github.com/hari1vkp
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-bold mb-4 text-yellow-400">Follow Me</h3>
+              <div className="flex gap-3">
+                <Button variant="outline" size="icon" asChild>
+                  <a href="https://github.com/hari1vkp" target="_blank" rel="noopener noreferrer">
+                    <Github className="h-5 w-5" />
+                  </a>
+                </Button>
+                <Button variant="outline" size="icon" asChild>
+                  <a href="mailto:hariharasudhan.info02@gmail.com">
+                    <Mail className="h-5 w-5" />
+                  </a>
+                </Button>
+                <Button variant="outline" size="icon" asChild>
+                  <a href="tel:+918667637540">
+                    <Phone className="h-5 w-5" />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border shadow-sm">
+              <h3 className="text-xl font-bold mb-6 text-yellow-400">Send Me a Message</h3>
+              <form className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="w-full px-3 py-2 border rounded-md bg-background/50"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full px-3 py-2 border rounded-md bg-background/50"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium mb-1">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    className="w-full px-3 py-2 border rounded-md bg-background/50"
+                    placeholder="Subject"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
+                  <textarea
+                    id="message"
+                    rows={4}
+                    className="w-full px-3 py-2 border rounded-md bg-background/50"
+                    placeholder="Your message"
+                  ></textarea>
+                </div>
+                <Button type="submit" className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600">
+                  Send Message
+                </Button>
+              </form>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FooterSection() {
+  return (
+    <footer className="py-10 border-t relative">
+      <div className="container px-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Hariharasudhan R. All rights reserved.
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" size="icon" asChild>
+              <a href="https://github.com/hari1vkp" target="_blank" rel="noopener noreferrer">
+                <Github className="h-5 w-5" />
+              </a>
+            </Button>
+            <Button variant="ghost" size="icon" asChild>
+              <a href="mailto:hariharasudhan.info02@gmail.com">
+                <Mail className="h-5 w-5" />
+              </a>
+            </Button>
+            <Button variant="ghost" size="icon" asChild>
+              <a href="tel:+918667637540">
+                <Phone className="h-5 w-5" />
+              </a>
+            </Button>
+          </div>
+          
+          <div className="text-sm text-muted-foreground">
+            Built with Next.js and shadcn/ui
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }
