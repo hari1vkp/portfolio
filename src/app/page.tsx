@@ -143,38 +143,48 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8 }}
-              className="text-center px-4 relative z-10"
+              className="text-center px-4 relative z-10 w-full max-w-3xl mx-auto"
             >
-              <motion.h1 
-                className="text-4xl md:text-6xl font-bold mb-6"
+              {/* Blur card background with yellow border */}
+              <div className="absolute inset-0 bg-card/30 backdrop-blur-lg rounded-2xl shadow-2xl -z-10 border border-yellow-400/50"></div>
+              
+              <motion.div
+                className="relative z-10 py-12 px-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
-                Welcome to <span className="text-yellow-400">Hari&apos;s Universe</span>
-              </motion.h1>
-              
-              <motion.p 
-                className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-              >
-                Where innovation orbits excellence in Java development
-              </motion.p>
-              
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-              >
-                <Button 
-                  size="lg" 
-                  onClick={handleExplore}
-                  className="animate-pulse hover:animate-none bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600"
+                <motion.h1 
+                  className="text-4xl md:text-6xl font-bold mb-6"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2, duration: 0.8 }}
                 >
-                  Explore My World <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+                  Welcome to <span className="text-yellow-400">Hari's Universe</span>
+                </motion.h1>
+                
+                <motion.p 
+                  className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4, duration: 0.8 }}
+                >
+                  Where innovation orbits excellence in Java development
+                </motion.p>
+                
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6, duration: 0.8 }}
+                >
+                  <Button 
+                    size="lg" 
+                    onClick={handleExplore}
+                    className="animate-pulse hover:animate-none bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600"
+                  >
+                    Explore My World <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </motion.div>
               </motion.div>
             </motion.div>
           )}
@@ -192,6 +202,7 @@ export default function Home() {
       
       <HeroSection />
       <SkillsSection />
+      <InternshipSection />
       <ProjectsSection />
       <ContactSection />
       <FooterSection />
@@ -218,7 +229,7 @@ function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Hi, I&apos;m <span className="text-yellow-400">Hariharasudhan R</span>
+            Hi, I'm <span className="text-yellow-400">Hariharasudhan R</span>
           </motion.h1>
           
           <motion.h2 
@@ -400,6 +411,72 @@ function SkillsSection() {
   );
 }
 
+function InternshipSection() {
+  return (
+    <section id="internship" className="py-20 bg-muted/30 relative">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/3 left-1/3 w-48 h-48 bg-yellow-500 rounded-full filter blur-[80px] opacity-20"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-48 h-48 bg-blue-500 rounded-full filter blur-[80px] opacity-20"></div>
+      </div>
+      
+      <div className="container px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-yellow-400">My Internship</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Hands-on experience in real-world development environments
+          </p>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border shadow-lg">
+            <div className="flex flex-col md:flex-row gap-8">
+              <div className="md:w-1/3">
+                <h3 className="text-2xl font-bold mb-2 text-yellow-400">Web Dev Intern</h3>
+                <p className="text-lg font-semibold">Cloud Garage</p>
+                <p className="text-muted-foreground">Oct 2024 - March 2025</p>
+              </div>
+              
+              <div className="md:w-2/3">
+                <h4 className="text-xl font-bold mb-4">Key Responsibilities:</h4>
+                <ul className="space-y-2">
+                  <li className="flex items-start">
+                    <span className="text-yellow-400 mr-2">•</span>
+                    <span>Built Java applications using Spring Boot</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-400 mr-2">•</span>
+                    <span>Integrated REST APIs and managed cloud services</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-400 mr-2">•</span>
+                    <span>Used API to trigger Terraform IAAC</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-400 mr-2">•</span>
+                    <span>Improved application performance and security</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 function ProjectsSection() {
   const projects = [
     {
@@ -410,10 +487,10 @@ function ProjectsSection() {
       demoUrl: "#"
     },
     {
-      title: "Web Development Internship Project",
-      description: "Built Java applications using Spring Boot. Integrated REST APIs and managed cloud services. Used API to trigger Terraform IAAC. Improved performance and security.",
-      technologies: ["Java", "Spring Boot", "REST APIs", "Terraform", "Cloud Services"],
-      githubUrl: "#",
+      title: "StagKitchen",
+      description: "AI-powered kitchen companion that generates recipes from available ingredients and creates personalized daily meal plans. Features include image recognition, dietary preference support, and nutritional tracking.",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Google AI (Gemini)", "Genkit"],
+      githubUrl: "https://github.com/hari1vkp/Stagkitchen",
       demoUrl: "#"
     }
   ];
@@ -476,6 +553,35 @@ function ProjectsSection() {
 }
 
 function ContactSection() {
+  const [formData, setFormData] = useState({
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Create Gmail compose URL with form data
+    const { subject, message } = formData;
+    const gmailSubject = encodeURIComponent(subject || 'Portfolio Contact');
+    const gmailBody = encodeURIComponent(`Subject: ${subject}
+
+Message:
+${message}`);
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=hariharasudhan.info02@gmail.com&su=${gmailSubject}&body=${gmailBody}`;
+    
+    // Open Gmail in a new tab
+    window.open(gmailUrl, '_blank');
+    
+    // Reset form
+    setFormData({ subject: '', message: '' });
+  };
+
   return (
     <section id="contact" className="py-20 bg-muted/30 relative">
       <div className="absolute inset-0 overflow-hidden">
@@ -509,11 +615,15 @@ function ContactSection() {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-yellow-400" />
-                  <span>hariharasudhan.info02@gmail.com</span>
+                  <a href="mailto:hariharasudhan.info02@gmail.com" className="hover:underline">
+                    hariharasudhan.info02@gmail.com
+                  </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-yellow-400" />
-                  <span>+91 8667637540</span>
+                  <a href="tel:+918667637540" className="hover:underline">
+                    +91 8667637540
+                  </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Github className="h-5 w-5 text-yellow-400" />
@@ -533,7 +643,7 @@ function ContactSection() {
                   </a>
                 </Button>
                 <Button variant="outline" size="icon" asChild>
-                  <a href="mailto:hariharasudhan.info02@gmail.com">
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hariharasudhan.info02@gmail.com" target="_blank" rel="noopener noreferrer">
                     <Mail className="h-5 w-5" />
                   </a>
                 </Button>
@@ -554,30 +664,14 @@ function ContactSection() {
           >
             <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border shadow-sm">
               <h3 className="text-xl font-bold mb-6 text-yellow-400">Send Me a Message</h3>
-              <form className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-3 py-2 border rounded-md bg-background/50"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-3 py-2 border rounded-md bg-background/50"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium mb-1">Subject</label>
                   <input
                     type="text"
                     id="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
                     className="w-full px-3 py-2 border rounded-md bg-background/50"
                     placeholder="Subject"
                   />
@@ -586,13 +680,19 @@ function ContactSection() {
                   <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
                   <textarea
                     id="message"
-                    rows={4}
+                    rows={6}
+                    value={formData.message}
+                    onChange={handleChange}
                     className="w-full px-3 py-2 border rounded-md bg-background/50"
                     placeholder="Your message"
+                    required
                   ></textarea>
                 </div>
-                <Button type="submit" className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600">
-                  Send Message
+                <Button 
+                  type="submit" 
+                  className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600"
+                >
+                  Send Message via Gmail
                 </Button>
               </form>
             </div>
