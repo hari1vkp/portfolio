@@ -152,7 +152,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8 }}
-              className="text-center px-4 relative z-10 w-full max-w-xs sm:max-w-md md:max-w-3xl mx-auto"
+              className="text-center px-4 relative z-10 w-[70%] max-w-xs sm:max-w-md md:max-w-3xl mx-auto"
             >
               {/* Blur card background with yellow border - responsive padding */}
               <div className="absolute inset-0 bg-card/30 backdrop-blur-lg rounded-2xl shadow-2xl -z-10 border border-yellow-400/50"></div>
