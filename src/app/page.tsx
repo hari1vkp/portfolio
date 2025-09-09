@@ -11,10 +11,10 @@ export default function Home() {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    // Show welcome screen initially
+    // Show welcome screen with delay to let solar system establish
     const timer = setTimeout(() => {
       setShowContent(true);
-    }, 1000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -27,7 +27,7 @@ export default function Home() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted overflow-hidden">
         {/* Animated background stars */}
-        <StarsBackground count={20} />
+        <StarsBackground count={10} />
         
         {/* Solar system animation - responsive for mobile */}
         <div className="absolute inset-0 flex items-center justify-center">
@@ -49,8 +49,8 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 ['--orbit-radius-mobile' as any]: '20px',
-                 ['--orbit-radius' as any]: '60px'
+                 ['--orbit-radius-mobile' as any]: '30px',
+                 ['--orbit-radius' as any]: '70px'
                }}>
           </div>
           
@@ -59,9 +59,9 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 ['--orbit-radius-mobile' as any]: '35px',
-                 ['--orbit-radius' as any]: '100px',
-                 animationDuration: '6s'
+                 ['--orbit-radius-mobile' as any]: '50px',
+                 ['--orbit-radius' as any]: '110px',
+                 animationDuration: '8s'
                }}>
           </div>
           
@@ -70,9 +70,9 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 ['--orbit-radius-mobile' as any]: '50px',
-                 ['--orbit-radius' as any]: '140px',
-                 animationDuration: '10s'
+                 ['--orbit-radius-mobile' as any]: '70px',
+                 ['--orbit-radius' as any]: '150px',
+                 animationDuration: '12s'
                }}>
             {/* Moon */}
             <div className="absolute w-0.5 h-0.5 md:w-1 md:h-1 bg-gray-300 rounded-full animate-orbit-mobile md:animate-orbit" 
@@ -92,9 +92,9 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 ['--orbit-radius-mobile' as any]: '70px',
-                 ['--orbit-radius' as any]: '180px',
-                 animationDuration: '15s'
+                 ['--orbit-radius-mobile' as any]: '90px',
+                 ['--orbit-radius' as any]: '190px',
+                 animationDuration: '16s'
                }}>
           </div>
           
@@ -103,9 +103,9 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 ['--orbit-radius-mobile' as any]: '90px',
-                 ['--orbit-radius' as any]: '220px',
-                 animationDuration: '20s'
+                 ['--orbit-radius-mobile' as any]: '120px',
+                 ['--orbit-radius' as any]: '240px',
+                 animationDuration: '24s'
                }}>
           </div>
           
@@ -114,9 +114,9 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 ['--orbit-radius-mobile' as any]: '110px',
-                 ['--orbit-radius' as any]: '260px',
-                 animationDuration: '25s'
+                 ['--orbit-radius-mobile' as any]: '150px',
+                 ['--orbit-radius' as any]: '290px',
+                 animationDuration: '30s'
                }}>
             {/* Saturn's rings - responsive */}
             <div className="absolute w-3 h-0.5 md:w-6 md:h-1 bg-yellow-200 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
@@ -127,9 +127,9 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 ['--orbit-radius-mobile' as any]: '130px',
-                 ['--orbit-radius' as any]: '300px',
-                 animationDuration: '30s'
+                 ['--orbit-radius-mobile' as any]: '180px',
+                 ['--orbit-radius' as any]: '340px',
+                 animationDuration: '36s'
                }}>
           </div>
           
@@ -138,9 +138,9 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 ['--orbit-radius-mobile' as any]: '150px',
-                 ['--orbit-radius' as any]: '340px',
-                 animationDuration: '35s'
+                 ['--orbit-radius-mobile' as any]: '210px',
+                 ['--orbit-radius' as any]: '390px',
+                 animationDuration: '42s'
                }}>
           </div>
         </div>
@@ -161,22 +161,22 @@ export default function Home() {
                 className="relative z-10 py-6 px-3 sm:py-8 sm:px-4 md:py-12 md:px-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
               >
                 <motion.h1 
                   className="text-xl sm:text-2xl md:text-4xl lg:text-6xl font-bold mb-3 sm:mb-4 md:mb-6"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
+                  transition={{ delay: 0.7, duration: 0.8 }}
                 >
-                  Welcome to <span className="text-yellow-400">Hari&#39;s Universe</span>
+                  Welcome to <span className="text-yellow-400">Hari's Universe</span>
                 </motion.h1>
                 
                 <motion.p 
                   className="text-sm sm:text-base md:text-xl lg:text-2xl text-muted-foreground mb-5 sm:mb-6 md:mb-10 max-w-2xl mx-auto"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
+                  transition={{ delay: 0.9, duration: 0.8 }}
                 >
                   Where innovation orbits excellence in Java development
                 </motion.p>
@@ -184,7 +184,7 @@ export default function Home() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6, duration: 0.8 }}
+                  transition={{ delay: 1.1, duration: 0.8 }}
                 >
                   <Button 
                     size="default"
@@ -206,7 +206,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-background to-muted">
       {/* Stars background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <StarsBackground count={150} />
+        <StarsBackground count={75} />
       </div>
       
       <HeroSection />

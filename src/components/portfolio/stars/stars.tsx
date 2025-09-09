@@ -1,62 +1,66 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useMemo, memo } from 'react';
+import { useReducedMotion } from 'framer-motion';
+import Star from '@/components/portfolio/performance/optimized-stars';
+import { usePerformanceMonitor } from '@/hooks/use-performance-monitor';
 
-interface Star {
+interface StarData {
   id: number;
-  style: {
-    top: string;
-    left: string;
-    width: string;
-    height: string;
-  };
-  transition: {
-    duration: number;
-    repeat: number;
-    delay: number;
-  };
+  top: string;
+  left: string;
+  size: string;
+  duration: number;
+  delay: number;
 }
 
-export function StarsBackground({ count = 100 }) {
-  const [stars, setStars] = useState<Star[]>([]);
+const StarsBackground = memo(({ count = 50 }: { count?: number }) => {
+  const [stars, setStars] = useState<StarData[]>([]);
+  const shouldReduceMotion = useReducedMotion();
+  const { isLowEndDevice } = usePerformanceMonitor();
+  
+  // Reduce star count on low-end devices
+  const starCount = isLowEndDevice ? Math.floor(count / 2) : count;
 
+  // Generate stars only once on mount
   useEffect(() => {
     const generateStars = () => {
-      const newStars = Array.from({ length: count }, (_, i) => ({
+      const newStars = Array.from({ length: starCount }, (_, i) => ({
         id: i,
-        style: {
-          top: `${Math.random() * 100}%`,
-          left: `${Math.random() * 100}%`,
-          width: `${Math.random() * 2 + 1}px`,
-          height: `${Math.random() * 2 + 1}px`,
-        },
-        transition: {
-          duration: 2 + Math.random() * 3,
-          repeat: Infinity,
-          delay: Math.random() * 2,
-        },
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        size: `${Math.random() * 2 + 1}px`,
+        duration: 2 + Math.random() * 3,
+        delay: Math.random() * 2,
       }));
       setStars(newStars);
     };
 
     generateStars();
-  }, [count]);
+  }, [starCount]);
+
+  // Memoize the stars rendering
+  const renderedStars = useMemo(() => {
+    return stars.map((star) => (
+      <Star
+        key={star.id}
+        id={star.id}
+        top={star.top}
+        left={star.left}
+        size={star.size}
+        duration={star.duration}
+        delay={star.delay}
+      />
+    ));
+  }, [stars]);
 
   return (
     <div className="absolute inset-0">
-      {stars.map((star) => (
-        <motion.div
-          key={star.id}
-          className="absolute bg-white rounded-full"
-          style={star.style}
-          animate={{
-            opacity: [0.2, 1, 0.2],
-            scale: [1, 1.2, 1],
-          }}
-          transition={star.transition}
-        />
-      ))}
+      {renderedStars}
     </div>
   );
-}
+});
+
+StarsBackground.displayName = 'StarsBackground';
+
+export { StarsBackground };

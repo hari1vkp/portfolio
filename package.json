@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "export": "next export",
-    "deploy": "next build && gh-pages -d out"
+    "deploy": "next build && gh-pages -d out",
+    "analyze": "ANALYZE=true next build",
+    "build:perf": "next build"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
@@ -31,10 +32,12 @@
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.16",
     "@eslint/eslintrc": "^3",
+    "@next/bundle-analyzer": "^14.2.32",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "critters": "^0.0.23",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
     "gh-pages": "^6.3.0",
