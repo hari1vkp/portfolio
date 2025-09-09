@@ -49,8 +49,8 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 '--orbit-radius-mobile': '20px',
-                 '--orbit-radius': '60px'
+                 ['--orbit-radius-mobile' as any]: '20px',
+                 ['--orbit-radius' as any]: '60px'
                }}>
           </div>
           
@@ -59,8 +59,8 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 '--orbit-radius-mobile': '35px',
-                 '--orbit-radius': '100px',
+                 ['--orbit-radius-mobile' as any]: '35px',
+                 ['--orbit-radius' as any]: '100px',
                  animationDuration: '6s'
                }}>
           </div>
@@ -70,18 +70,18 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 '--orbit-radius-mobile': '50px',
-                 '--orbit-radius': '140px',
-                 animationDuration: '9s'
+                 ['--orbit-radius-mobile' as any]: '50px',
+                 ['--orbit-radius' as any]: '140px',
+                 animationDuration: '10s'
                }}>
             {/* Moon */}
             <div className="absolute w-0.5 h-0.5 md:w-1 md:h-1 bg-gray-300 rounded-full animate-orbit-mobile md:animate-orbit" 
                  style={{ 
                    top: '50%',
                    left: '50%',
-                   '--orbit-radius-mobile': '3px',
-                   '--orbit-radius': '8px',
-                   animationDuration: '1.5s',
+                   ['--orbit-radius-mobile' as any]: '4px',
+                   ['--orbit-radius' as any]: '8px',
+                   animationDuration: '2s',
                    animationDirection: 'reverse'
                  }}>
             </div>
@@ -92,9 +92,9 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 '--orbit-radius-mobile': '65px',
-                 '--orbit-radius': '180px',
-                 animationDuration: '11s'
+                 ['--orbit-radius-mobile' as any]: '70px',
+                 ['--orbit-radius' as any]: '180px',
+                 animationDuration: '15s'
                }}>
           </div>
           
@@ -103,9 +103,9 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 '--orbit-radius-mobile': '80px',
-                 '--orbit-radius': '220px',
-                 animationDuration: '15s'
+                 ['--orbit-radius-mobile' as any]: '90px',
+                 ['--orbit-radius' as any]: '220px',
+                 animationDuration: '20s'
                }}>
           </div>
           
@@ -114,12 +114,12 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 '--orbit-radius-mobile': '95px',
-                 '--orbit-radius': '260px',
-                 animationDuration: '18s'
+                 ['--orbit-radius-mobile' as any]: '110px',
+                 ['--orbit-radius' as any]: '260px',
+                 animationDuration: '25s'
                }}>
             {/* Saturn's rings - responsive */}
-            <div className="absolute w-2 h-0.5 md:w-6 md:h-1 bg-yellow-200 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute w-3 h-0.5 md:w-6 md:h-1 bg-yellow-200 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
           </div>
           
           {/* Planet 7 - Uranus */}
@@ -127,9 +127,9 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 '--orbit-radius-mobile': '110px',
-                 '--orbit-radius': '300px',
-                 animationDuration: '22s'
+                 ['--orbit-radius-mobile' as any]: '130px',
+                 ['--orbit-radius' as any]: '300px',
+                 animationDuration: '30s'
                }}>
           </div>
           
@@ -138,9 +138,9 @@ export default function Home() {
                style={{ 
                  top: '50%',
                  left: '50%',
-                 '--orbit-radius-mobile': '125px',
-                 '--orbit-radius': '340px',
-                 animationDuration: '26s'
+                 ['--orbit-radius-mobile' as any]: '150px',
+                 ['--orbit-radius' as any]: '340px',
+                 animationDuration: '35s'
                }}>
           </div>
         </div>
@@ -169,7 +169,7 @@ export default function Home() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
                 >
-                  Welcome to <span className="text-yellow-400">Hari's Universe</span>
+                  Welcome to <span className="text-yellow-400">Hari&#39;s Universe</span>
                 </motion.h1>
                 
                 <motion.p 
@@ -238,7 +238,7 @@ function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Hi, I'm <span className="text-yellow-400">Hariharasudhan R</span>
+            Hi, I&#39;m <span className="text-yellow-400">Hariharasudhan R</span>
           </motion.h1>
           
           <motion.h2 
