@@ -140,10 +140,23 @@
   }
 }
 
+@keyframes orbit-mobile {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(var(--orbit-radius-mobile)) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(var(--orbit-radius-mobile)) rotate(-360deg);
+  }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
 
 .animate-orbit {
   animation: orbit 10s linear infinite;
+}
+
+.animate-orbit-mobile {
+  animation: orbit-mobile 8s linear infinite;
 }

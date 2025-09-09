@@ -27,13 +27,13 @@ export default function Home() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted overflow-hidden">
         {/* Animated background stars */}
-        <StarsBackground count={100} />
+        <StarsBackground count={20} />
         
-        {/* Solar system animation */}
+        {/* Solar system animation - responsive for mobile */}
         <div className="absolute inset-0 flex items-center justify-center">
-          {/* Sun */}
+          {/* Sun - responsive sizing */}
           <motion.div
-            className="absolute w-32 h-32 bg-yellow-500 rounded-full shadow-[0_0_40px_20px_rgba(255,204,0,0.5)]"
+            className="absolute w-12 h-12 sm:w-16 sm:h-16 md:w-32 md:h-32 bg-yellow-500 rounded-full shadow-[0_0_15px_7px_rgba(255,204,0,0.5)] sm:shadow-[0_0_20px_10px_rgba(255,204,0,0.5)] md:shadow-[0_0_40px_20px_rgba(255,204,0,0.5)]"
             animate={{
               scale: [1, 1.05, 1],
             }}
@@ -43,95 +43,104 @@ export default function Home() {
             }}
           />
           
-          {/* Orbiting planets using custom orbital paths */}
+          {/* Orbiting planets using custom orbital paths - scaled for mobile */}
           {/* Planet 1 - Mercury */}
-          <div className="absolute w-2 h-2 bg-gray-400 rounded-full animate-orbit" 
+          <div className="absolute w-1 h-1 md:w-2 md:h-2 bg-gray-400 rounded-full animate-orbit-mobile md:animate-orbit" 
                style={{ 
                  top: '50%',
                  left: '50%',
+                 '--orbit-radius-mobile': '20px',
                  '--orbit-radius': '60px'
                }}>
           </div>
           
           {/* Planet 2 - Venus */}
-          <div className="absolute w-3 h-3 bg-yellow-200 rounded-full animate-orbit" 
+          <div className="absolute w-1.5 h-1.5 md:w-3 md:h-3 bg-yellow-200 rounded-full animate-orbit-mobile md:animate-orbit" 
                style={{ 
                  top: '50%',
                  left: '50%',
+                 '--orbit-radius-mobile': '35px',
                  '--orbit-radius': '100px',
-                 animationDuration: '8s'
+                 animationDuration: '6s'
                }}>
           </div>
           
           {/* Planet 3 - Earth */}
-          <div className="absolute w-3 h-3 bg-blue-500 rounded-full animate-orbit" 
+          <div className="absolute w-1.5 h-1.5 md:w-3 md:h-3 bg-blue-500 rounded-full animate-orbit-mobile md:animate-orbit" 
                style={{ 
                  top: '50%',
                  left: '50%',
+                 '--orbit-radius-mobile': '50px',
                  '--orbit-radius': '140px',
-                 animationDuration: '12s'
+                 animationDuration: '9s'
                }}>
             {/* Moon */}
-            <div className="absolute w-1 h-1 bg-gray-300 rounded-full animate-orbit" 
+            <div className="absolute w-0.5 h-0.5 md:w-1 md:h-1 bg-gray-300 rounded-full animate-orbit-mobile md:animate-orbit" 
                  style={{ 
                    top: '50%',
                    left: '50%',
+                   '--orbit-radius-mobile': '3px',
                    '--orbit-radius': '8px',
-                   animationDuration: '2s',
+                   animationDuration: '1.5s',
                    animationDirection: 'reverse'
                  }}>
             </div>
           </div>
           
           {/* Planet 4 - Mars */}
-          <div className="absolute w-2.5 h-2.5 bg-red-500 rounded-full animate-orbit" 
+          <div className="absolute w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-red-500 rounded-full animate-orbit-mobile md:animate-orbit" 
                style={{ 
                  top: '50%',
                  left: '50%',
+                 '--orbit-radius-mobile': '65px',
                  '--orbit-radius': '180px',
-                 animationDuration: '15s'
+                 animationDuration: '11s'
                }}>
           </div>
           
           {/* Planet 5 - Jupiter */}
-          <div className="absolute w-5 h-5 bg-orange-300 rounded-full animate-orbit" 
+          <div className="absolute w-2.5 h-2.5 md:w-5 md:h-5 bg-orange-300 rounded-full animate-orbit-mobile md:animate-orbit" 
                style={{ 
                  top: '50%',
                  left: '50%',
+                 '--orbit-radius-mobile': '80px',
                  '--orbit-radius': '220px',
-                 animationDuration: '20s'
+                 animationDuration: '15s'
                }}>
           </div>
           
           {/* Planet 6 - Saturn */}
-          <div className="absolute w-4 h-4 bg-yellow-100 rounded-full animate-orbit" 
+          <div className="absolute w-2 h-2 md:w-4 md:h-4 bg-yellow-100 rounded-full animate-orbit-mobile md:animate-orbit" 
                style={{ 
                  top: '50%',
                  left: '50%',
+                 '--orbit-radius-mobile': '95px',
                  '--orbit-radius': '260px',
-                 animationDuration: '25s'
+                 animationDuration: '18s'
                }}>
-            {/* Saturn's rings */}
-            <div className="absolute w-6 h-1 bg-yellow-200 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+            {/* Saturn's rings - responsive */}
+            <div className="absolute w-2 h-0.5 md:w-6 md:h-1 bg-yellow-200 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
           </div>
           
           {/* Planet 7 - Uranus */}
-          <div className="absolute w-3.5 h-3.5 bg-blue-300 rounded-full animate-orbit" 
+          <div className="absolute w-2 h-2 md:w-3.5 md:h-3.5 bg-blue-300 rounded-full animate-orbit-mobile md:animate-orbit" 
                style={{ 
                  top: '50%',
                  left: '50%',
+                 '--orbit-radius-mobile': '110px',
                  '--orbit-radius': '300px',
-                 animationDuration: '30s'
+                 animationDuration: '22s'
                }}>
           </div>
           
           {/* Planet 8 - Neptune */}
-          <div className="absolute w-3.5 h-3.5 bg-blue-700 rounded-full animate-orbit" 
+          <div className="absolute w-2 h-2 md:w-3.5 md:h-3.5 bg-blue-700 rounded-full animate-orbit-mobile md:animate-orbit" 
                style={{ 
                  top: '50%',
                  left: '50%',
+                 '--orbit-radius-mobile': '125px',
                  '--orbit-radius': '340px',
-                 animationDuration: '35s'
+                 animationDuration: '26s'
                }}>
           </div>
         </div>
@@ -143,19 +152,19 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8 }}
-              className="text-center px-4 relative z-10 w-full max-w-3xl mx-auto"
+              className="text-center px-4 relative z-10 w-full max-w-xs sm:max-w-md md:max-w-3xl mx-auto"
             >
-              {/* Blur card background with yellow border */}
+              {/* Blur card background with yellow border - responsive padding */}
               <div className="absolute inset-0 bg-card/30 backdrop-blur-lg rounded-2xl shadow-2xl -z-10 border border-yellow-400/50"></div>
               
               <motion.div
-                className="relative z-10 py-12 px-6"
+                className="relative z-10 py-6 px-3 sm:py-8 sm:px-4 md:py-12 md:px-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
                 <motion.h1 
-                  className="text-4xl md:text-6xl font-bold mb-6"
+                  className="text-xl sm:text-2xl md:text-4xl lg:text-6xl font-bold mb-3 sm:mb-4 md:mb-6"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
@@ -164,7 +173,7 @@ export default function Home() {
                 </motion.h1>
                 
                 <motion.p 
-                  className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto"
+                  className="text-sm sm:text-base md:text-xl lg:text-2xl text-muted-foreground mb-5 sm:mb-6 md:mb-10 max-w-2xl mx-auto"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4, duration: 0.8 }}
@@ -178,11 +187,11 @@ export default function Home() {
                   transition={{ delay: 0.6, duration: 0.8 }}
                 >
                   <Button 
-                    size="lg" 
+                    size="default"
                     onClick={handleExplore}
-                    className="animate-pulse hover:animate-none bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600"
+                    className="animate-pulse hover:animate-none bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 w-full sm:w-4/5 md:w-auto md:px-8 mx-auto"
                   >
-                    Explore My World <ArrowRight className="ml-2 h-5 w-5" />
+                    Explore My World <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                   </Button>
                 </motion.div>
               </motion.div>
